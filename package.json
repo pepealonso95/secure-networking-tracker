@@ -1,0 +1,29 @@
+{
+  "name": "secure-networking-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c yellow,blue \"npm run dev -w @networking-tracker/api\" \"npm run dev -w @networking-tracker/web\"",
+    "dev:web": "npm run dev -w @networking-tracker/web",
+    "dev:api": "npm run dev -w @networking-tracker/api",
+    "build": "npm run build -w @networking-tracker/api && npm run build -w @networking-tracker/web",
+    "lint": "npm run lint -w @networking-tracker/api && npm run lint -w @networking-tracker/web",
+    "typecheck": "npm run typecheck -w @networking-tracker/api && npm run typecheck -w @networking-tracker/web",
+    "test": "npm run test -w @networking-tracker/api && npm run test -w @networking-tracker/web",
+    "test:coverage": "npm run test:coverage -w @networking-tracker/api && npm run test:coverage -w @networking-tracker/web",
+    "test:e2e": "playwright test",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@neon/sdk": "3.0.0",
+    "@playwright/test": "1.62.1",
+    "concurrently": "9.2.1",
+    "postgres": "3.4.9"
+  }
+}

@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", serif;
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+}
+
+:root {
+  --background: #fbfaf6;
+  --foreground: #142331;
+  --card: #fffefb;
+  --card-foreground: #142331;
+  --popover: #fffefb;
+  --popover-foreground: #142331;
+  --primary: #003262;
+  --primary-foreground: #ffffff;
+  --secondary: #f5e9c9;
+  --secondary-foreground: #4a3600;
+  --muted: #f1efe8;
+  --muted-foreground: #65717d;
+  --accent: #f9edcb;
+  --accent-foreground: #173653;
+  --destructive: #b42318;
+  --border: #dedbd1;
+  --input: #d4d0c5;
+  --ring: #fdb515;
+  --radius: 0.625rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 90% 0%, rgb(253 181 21 / 10%), transparent 28rem),
+    radial-gradient(circle at 0% 40%, rgb(0 50 98 / 5%), transparent 30rem),
+    var(--background);
+  color: var(--foreground);
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgb(253 181 21 / 35%);
+}
+
