@@ -1,0 +1,18 @@
+Secure Networking Tracker quality gates
+Run: 2026-09-01
+
+PASS  npm audit: 0 vulnerabilities
+PASS  ESLint: API and web, 0 warnings
+PASS  TypeScript: API and web strict checks
+PASS  Vitest API: 19 tests
+PASS  Vitest web: 4 tests
+PASS  API production build
+PASS  Next.js static production build
+
+Static routes emitted:
+  /
+  /contacts
+  /sign-in
+  /sign-up
+
+Next.js classified every application route as static content.

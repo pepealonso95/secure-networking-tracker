@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { createApp } from "./app";
+import { createApp } from "./app.js";
 
 describe("API contract", () => {
   it("returns a public health response", async () => {
@@ -31,4 +31,3 @@ describe("API contract", () => {
     expect(response.headers.get("access-control-allow-origin")).toBeNull();
   });
 });
-

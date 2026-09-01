@@ -56,8 +56,8 @@ export function ContactList({ contacts, onEdit, onDelete }: { contacts: Contact[
               </div>
               {contact.notes ? <p className="mt-4 line-clamp-3 rounded-md bg-muted p-3 text-sm leading-6">{contact.notes}</p> : null}
               <div className="mt-5 flex gap-2 border-t pt-4">
-                <Button variant="outline" size="sm" className="flex-1" onClick={() => onEdit(contact)}><Pencil />Edit</Button>
-                <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive" onClick={() => onDelete(contact)}><Trash2 />Delete</Button>
+                <Button variant="outline" size="sm" className="flex-1" onClick={() => onEdit(contact)} aria-label={`Edit ${contact.name}`}><Pencil />Edit</Button>
+                <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive" onClick={() => onDelete(contact)} aria-label={`Delete ${contact.name}`}><Trash2 />Delete</Button>
               </div>
             </CardContent>
           </Card>
@@ -66,4 +66,3 @@ export function ContactList({ contacts, onEdit, onDelete }: { contacts: Contact[
     </>
   );
 }
-

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { createContactSchema, updateContactSchema } from "./contact-schema";
+import { createContactSchema, updateContactSchema } from "./contact-schema.js";
 
 describe("contact input validation", () => {
   it("trims fields, converts empty optional values to null, and strips ownership", () => {
@@ -46,4 +46,3 @@ describe("contact input validation", () => {
     expect(result).toEqual({ company: "Analytical Engines Ltd." });
   });
 });
-

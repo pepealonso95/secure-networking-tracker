@@ -1,0 +1,24 @@
+Production smoke verification
+Run: 2026-09-01
+
+Web deployment: READY
+  /         200
+  /sign-in  200
+  /sign-up  200
+  /contacts 200
+
+API deployment: READY
+  GET /api/health    200
+  GET /api/contacts  401 without a bearer token
+
+Health response:
+  {"data":{"status":"ok","service":"secure-networking-tracker-api"}}
+
+Unauthorized response:
+  {"error":{"code":"unauthorized","message":"A valid bearer token is required"}}
+
+CORS:
+  production web origin reflected exactly
+  untrusted origin not reflected
+
+Runtime error log scan after browser verification: no errors found

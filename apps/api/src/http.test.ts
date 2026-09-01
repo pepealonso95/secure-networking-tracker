@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { apiError, parseBearerToken } from "./http";
+import { apiError, parseBearerToken } from "./http.js";
 
 describe("HTTP helpers", () => {
   it.each([undefined, "", "Basic abc", "Bearer", "Bearer one two"])(
@@ -24,4 +24,3 @@ describe("HTTP helpers", () => {
     });
   });
 });
-

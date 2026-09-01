@@ -1,0 +1,22 @@
+Neon database security verification
+Run: 2026-09-01
+Region: aws-us-east-1
+
+contacts.relrowsecurity = true
+contacts.relforcerowsecurity = true
+
+Authenticated policies:
+  DELETE  contacts_delete_own  USING auth.user_id() = user_id
+  INSERT  contacts_insert_own  WITH CHECK auth.user_id() = user_id
+  SELECT  contacts_select_own  USING auth.user_id() = user_id
+  UPDATE  contacts_update_own  USING and WITH CHECK auth.user_id() = user_id
+
+Explicit authenticated table grants:
+  DELETE
+  INSERT
+  SELECT
+  UPDATE
+
+Anonymous contact grants: none
+Data API: active with Neon Auth
+RLS catalog queries returned the expected four policies and forced-RLS state.

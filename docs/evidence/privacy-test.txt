@@ -1,0 +1,17 @@
+Production two-account privacy test
+Run: 2026-09-01
+
+PASS  User A created a contact.
+PASS  User B's GET /api/contacts returned an empty collection.
+PASS  User B's PATCH of User A's contact returned 404.
+PASS  User B's DELETE of User A's contact returned 404.
+PASS  User A could still read the contact after both attempts.
+PASS  User A deleted the contact successfully.
+
+The full production Playwright result was 3 passed and 1 skipped:
+  desktop signup, sign-in, CRUD, refresh, filtering, validation, delete, sign-out: passed
+  desktop two-account privacy: passed
+  mobile signup, sign-in, CRUD, refresh, filtering, validation, delete, sign-out: passed
+  duplicate mobile privacy run: intentionally skipped because the API/RLS boundary is viewport-independent
+
+Disposable test contacts and auth users were removed after verification.

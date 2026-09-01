@@ -8,6 +8,9 @@
   "engines": {
     "node": "24.x"
   },
+  "overrides": {
+    "vitest": "4.1.11"
+  },
   "scripts": {
     "dev": "concurrently -n api,web -c yellow,blue \"npm run dev -w @networking-tracker/api\" \"npm run dev -w @networking-tracker/web\"",
     "dev:web": "npm run dev -w @networking-tracker/web",
@@ -23,7 +26,8 @@
   "devDependencies": {
     "@neon/sdk": "3.0.0",
     "@playwright/test": "1.62.1",
-    "concurrently": "9.2.1",
-    "postgres": "3.4.9"
+    "concurrently": "9.2.4",
+    "postgres": "3.4.9",
+    "vitest": "4.1.11"
   }
 }

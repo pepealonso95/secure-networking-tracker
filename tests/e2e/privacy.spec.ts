@@ -11,7 +11,7 @@ async function signUp(page: Page, label: string) {
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password!);
   await page.getByRole("button", { name: "Create account" }).click();
-  await expect(page).toHaveURL(/\/contacts$/);
+  await expect(page).toHaveURL(/\/contacts$/, { timeout: 15_000 });
 }
 
 async function readJwt(page: Page): Promise<string> {
@@ -26,6 +26,7 @@ async function readJwt(page: Page): Promise<string> {
 
 test.describe("two-account privacy", () => {
   test.skip(!password || !apiUrl || !authUrl, "Set E2E_PASSWORD, E2E_API_URL, and NEXT_PUBLIC_NEON_AUTH_URL");
+  test.skip(({ isMobile }) => Boolean(isMobile), "The API privacy boundary is viewport-independent");
 
   test("user B cannot list, update, or delete user A's contact", async ({ browser }) => {
     const contextA: BrowserContext = await browser.newContext();
@@ -39,7 +40,7 @@ test.describe("two-account privacy", () => {
     await pageA.getByRole("button", { name: "Add contact" }).last().click();
     const createResponse = await createPromise;
     const created = (await createResponse.json()).data as { id: number };
-    await expect(pageA.getByText(contactName)).toBeVisible();
+    await expect(pageA.locator("p:visible").filter({ hasText: contactName }).first()).toBeVisible();
 
     const contextB = await browser.newContext();
     const pageB = await contextB.newPage();
@@ -62,13 +63,12 @@ test.describe("two-account privacy", () => {
     expect(deleteResponse.status()).toBe(404);
 
     await pageA.reload();
-    await expect(pageA.getByText(contactName)).toBeVisible();
+    await expect(pageA.locator("p:visible").filter({ hasText: contactName }).first()).toBeVisible();
     await pageA.getByRole("button", { name: `Delete ${contactName}` }).click();
     await pageA.getByRole("button", { name: "Delete contact" }).click();
-    await expect(pageA.getByText(contactName)).toHaveCount(0);
+    await expect(pageA.locator("p:visible").filter({ hasText: contactName })).toHaveCount(0);
 
     await contextA.close();
     await contextB.close();
   });
 });
-

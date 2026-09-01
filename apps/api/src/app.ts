@@ -3,9 +3,9 @@ import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
 
-import { createContactSchema, updateContactSchema, zodFieldErrors } from "./contact-schema";
-import { apiError, parseBearerToken } from "./http";
-import { createDataClient, type DataClient } from "./neon";
+import { createContactSchema, updateContactSchema, zodFieldErrors } from "./contact-schema.js";
+import { apiError, parseBearerToken } from "./http.js";
+import { createDataClient, type DataClient } from "./neon.js";
 
 type Variables = { token: string };
 type ClientFactory = (token: string) => DataClient;
@@ -176,4 +176,3 @@ export function createApp(clientFactory: ClientFactory = createDataClient) {
 }
 
 export const app = createApp();
-

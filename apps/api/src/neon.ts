@@ -1,6 +1,6 @@
 import { createClient } from "@neondatabase/neon-js";
 
-import type { Database } from "./types";
+import type { Database } from "./types.js";
 
 export function createDataClient(token: string) {
   const url = process.env.NEON_DATA_API_URL;
@@ -17,4 +17,3 @@ export function createDataClient(token: string) {
 }
 
 export type DataClient = ReturnType<typeof createDataClient>;
-

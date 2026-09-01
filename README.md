@@ -4,9 +4,11 @@ A private contact tracker built as two separate applications: a statically expor
 
 ## Live deliverables
 
-- Web app: deployment pending
-- API health: deployment pending
+- Web app: [secure-networking-tracker-web.vercel.app](https://secure-networking-tracker-web.vercel.app)
+- API health: [secure-networking-tracker-api.vercel.app/api/health](https://secure-networking-tracker-api.vercel.app/api/health)
 - Public repository: [github.com/pepealonso95/secure-networking-tracker](https://github.com/pepealonso95/secure-networking-tracker)
+
+Both Vercel deployments are production-ready and independently connected to this GitHub monorepo. Neon runs in AWS US East (`aws-us-east-1`).
 
 ## What the app does
 
@@ -135,6 +137,28 @@ The privacy test creates a contact as User A, then proves User B receives an emp
 
 See [`docs/evidence`](docs/evidence/README.md) for the sanitized final run.
 
+Final results:
+
+- Lint, strict TypeScript, and both production builds passed.
+- 23 Vitest tests passed: 19 API tests and 4 SPA data tests.
+- Production Playwright passed desktop and mobile CRUD, plus the desktop two-account privacy boundary. The duplicate mobile privacy run is intentionally skipped because that boundary is enforced by the API and database, not the viewport.
+- `npm audit` reports 0 vulnerabilities.
+- Production runtime error logs were empty after the browser run.
+
+## Screenshots
+
+### Desktop contacts
+
+![Desktop contacts dashboard](docs/evidence/screenshots/desktop-chromium-contacts.png)
+
+### Mobile contacts
+
+![Mobile contact cards](docs/evidence/screenshots/mobile-chromium-contacts.png)
+
+### Sign in
+
+![Sign-in screen](docs/evidence/screenshots/sign-in.png)
+
 ## Deployment
 
 The monorepo is connected to two Vercel projects:
@@ -161,4 +185,3 @@ The monorepo is connected to two Vercel projects:
 - Filtering and sorting happen in the browser after the private collection is returned. Pagination would be needed for a large network.
 - The app does not include teams, sharing, admin tools, AI features, or social login.
 - Neon Auth and `@neondatabase/neon-js` are beta interfaces, so the package is pinned exactly and the lockfile is committed.
-
